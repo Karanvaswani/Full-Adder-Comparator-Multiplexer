@@ -1,49 +1,16 @@
---------------behavioural--------------------------------
+entity COMPARATOR_1bit_20es062 is 
+Port ( A_062 : in  STD_LOGIC; 
+B_062 : in  STD_LOGIC; 
+X_062 : out  STD_LOGIC; 
+Y_062 : out  STD_LOGIC; 
+Z_062 : out  STD_LOGIC); 
+end COMPARATOR_1bit_20es062; 
+architecture Behavioral of COMPARATOR_1bit_20es062 is 
+begin 
+X_062 <= '1' when A_062 > B_062 else '0';   
+Y_062 <= '1' when A_062 < B_062 else '0';   
+Z_062 <= '1' when A_062 = B_062 else '0';   
+end Behavioral; 
 
 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all;
-use ieee.std_logic_unsigned.all;
-
-entity 1bit_comp is 
-Port (a,b:in Std_logic;
-      greater,lesser,equal: out std_logic);
-end 1bit_comp;
-
-architecture Beh of 2bit_comp is 
-begin
-process(a,b)
-begin
-greater<= '0';
-lesser<='0';
-equal<='0';
-
-if a>b then 
-greater <='1';
-elsif b>a then 
-lesser<='1'
-else 
-equal<='1';
-end if;
-end process;
-end Beh;
------------------------------Data Flow------------------------
-
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all;
-
-entity 1bit_comp is 
-Port (a,b:in Std_logic;
-      greater,lesser,equal: out std_logic);
-end 1bit_comp;
-
-Architecture DataFlow of 1bit_comp is
-begin
-greater<= a and (not b);
-lesser<= (not a ) and b;
-equal <= (a and b) or ((not a) and (not b));
-
-end Dataflow;
 
